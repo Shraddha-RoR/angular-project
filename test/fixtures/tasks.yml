@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_name: MyString
+  start_date: 2017-10-30
+  end_date: 2017-10-30
+  status: 
+  project_id: 
+
+two:
+  task_name: MyString
+  start_date: 2017-10-30
+  end_date: 2017-10-30
+  status: 
+  project_id: 

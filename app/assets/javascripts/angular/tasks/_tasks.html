@@ -1,0 +1,89 @@
+<div ng-controller="TasksController as vmt">
+  <h3>Tasks</h3>
+  <div class="col-xs-3">
+    <button ng-click="vmt.new()" type="button" class="btn btn-success">
+      <i class="fa fa-plus-circle fa-lg"></i>
+      New Tasks
+    </button>
+  </div>
+  
+  <div class="panel panel-default col-xs-12">
+
+    <div class="row panel-heading">
+      <div class="col-xs-2">
+        Start Date
+      </div>
+       <div class="col-xs-2">
+        End Date
+      </div>
+      <div class="col-xs-2">
+        Task Name 
+      </div>
+      <div class="col-xs-2">
+        Status 
+      </div>
+      <div class="col-xs-2">
+        Priority
+      </div>
+      <div class="col-xs-2">
+      </div>
+    </div>
+    <ul class="list-group">
+      <span ng-if="vmt.newTask">
+        <li class="list-group-item row">
+          <form class="form-inline" ng-submit="vmt.create()">
+            <task-form task="vmt.newTask"></task-form>
+            <div>
+              <button ng-click="vmt.newCancel()" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+        </li>
+      </span>
+
+      <li ng-repeat="task in vmt.tasks | dateRange:'start_time':vmt.rangeDescriptor | orderBy: '-start_time'"
+          class="list-group-item row">
+
+          <span ng-if="task != vmt.editedTaskMarker">
+            <div class="col-xs-2">
+              {{ task.start_date  }}
+            </div>
+            <div class="col-xs-2">
+              {{ task.end_date}}
+            </div>
+            <div class="col-xs-2">
+              <a href="#/projects/2/tasks/{{task.id}}/comments">{{task.task_name}}</a>
+            </div>
+            <div class="col-xs-2">
+              {{ task.status ? 'Closed' : 'Open'}}
+            </div>
+            <div class="col-xs-2">
+              <div ng-switch="task.priority">
+                <div ng-switch-when="3">High</div>
+                <div ng-switch-when="2">Medium</div>
+                <div ng-switch-when="1">Low</div>
+                <div ng-switch-when="0">None</div>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <button ng-click="vmt.edit(task)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
+              <button confirmed-click="vmt.destroy(task)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
+              </button>
+ 
+            </div>
+          </span>
+
+          <span ng-if="task == vmt.editedTaskMarker">
+            <form class="form-inline" ng-submit="vmt.update()">
+              <task-form task="vmt.clonedTask"></task-form>
+              <div>
+                <button ng-click="vmt.editCancel()" class="btn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </span>
+
+      </li> <!-- end ng-repeat -->
+    </ul>
+  </div> <!-- end panel -->
+</div>

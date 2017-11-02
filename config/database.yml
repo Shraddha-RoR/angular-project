@@ -1,0 +1,7 @@
+development: &development
+  # POSTGRESQL
+  adapter: postgresql
+  database: test_project_development
+  host: localhost
+  username: root
+  password: root

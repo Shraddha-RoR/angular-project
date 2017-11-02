@@ -1,0 +1,30 @@
+<div class="col-xs-3">
+  <span class="dropdown" is-open="dropdownOpen">
+    <div class="input-group dropdown-toggle">
+      <input type="datetime" datetime-converter class="form-control" data-ng-model="project.start_time" required>
+      <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
+    </div>
+    <ul class="dropdown-menu">
+      <datetimepicker datetime-converter data-ng-model="project.start_time" on-set-time="closeDropdown()"/>
+    </ul> 
+  </span>
+</div>
+<div class="col-xs-3">
+  <span class="dropdown" is-open="dropdownOpen">
+    <div class="input-group dropdown-toggle">
+      <input type="datetime" datetime-converter class="form-control" data-ng-model="project.end_time" required>
+      <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
+    </div>
+     <ul class="dropdown-menu">
+      <datetimepicker datetime-converter data-ng-model="project.start_time" on-set-time="closeDropdown()"/>
+    </ul>  
+  </span>
+</div>
+ 
+<div class="col-xs-2">
+  <input class="form-control" type="text" ng-model="project.project_name" required>
+</div>
+
+<div class="col-xs-2">
+    <input class="form-control" type="checkbox" ng-model="project.status" value="">
+</div>
